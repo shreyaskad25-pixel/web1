@@ -1,0 +1,46 @@
+.services-hero {
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+  min-height: 76vh;
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  color: #1f2a44;
+  line-height: 1.1;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid rgba(13, 110, 253, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 1.5rem;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1rem 1.8rem rgba(13, 110, 253, 0.1) !important;
+}
+
+.icon-circle {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e8f1ff;
+  color: #0d6efd;
+  font-weight: 700;
+}
+
+.service-card h4 {
+  color: #1f2a44;
+  margin-bottom: 0.8rem;
+}
+
+.service-card p {
+  color: #5f6b7a;
+  margin-bottom: 0;
+}

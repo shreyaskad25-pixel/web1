@@ -1,0 +1,25 @@
+.signup-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: #f8faff;
+}
+
+.signup-card {
+  background: #ffffff;
+  border: 1px solid rgba(13, 110, 253, 0.08);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #1f2a44;
+}
+
+.form-control {
+  border-radius: 0.85rem;
+  padding: 0.8rem 1rem;
+}
+
+.btn-primary {
+  border-radius: 0.85rem;
+}

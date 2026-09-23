@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3f7ff 0%, #eef2ff 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(180deg, #f6f9ff 0%, #eef3ff 100%);
+}
+
+.navbar {
+  padding: 0.9rem 1rem;
+  backdrop-filter: blur(12px);
+  background: rgba(13, 110, 253, 0.92) !important;
+}
+
+.navbar-brand {
+  letter-spacing: 0.04em;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-light {
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+}
+
+main {
+  min-height: calc(100vh - 80px);
+}
+
+h1 {
+  color: #1f2a44;
+}
+
+img {
+  user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+}

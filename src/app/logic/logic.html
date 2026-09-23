@@ -1,0 +1,76 @@
+<section class="login-section">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="login-visual">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Business team" />
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="login-card shadow-sm rounded-4 p-4 p-md-5">
+          <div class="text-center mb-4">
+            <span class="badge text-bg-primary mb-3">Welcome back</span>
+            <h2 class="mb-2">Login</h2>
+            <p class="text-secondary mb-0">Sign in to continue to your dashboard.</p>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="alert alert-danger" role="alert" *ngIf="loginError">
+              {{ loginError }}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                formControlName="username"
+                [ngClass]="{ 'is-invalid': username?.invalid && username?.touched }"
+                placeholder="Enter your username"
+              />
+              <div class="invalid-feedback" *ngIf="username?.touched && username?.errors">
+                <span *ngIf="username?.errors?.['required']">Username is required.</span>
+                <span *ngIf="username?.errors?.['minlength']">Username must be at least 3 characters.</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': password?.invalid && password?.touched }"
+                placeholder="Enter your password"
+              />
+              <div class="invalid-feedback" *ngIf="password?.touched && password?.errors">
+                <span *ngIf="password?.errors?.['required']">Password is required.</span>
+                <span *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rememberMe" formControlName="rememberMe" />
+                <label class="form-check-label text-secondary" for="rememberMe">Remember me</label>
+              </div>
+              <a href="#" class="text-primary text-decoration-none">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
+
+            <p class="text-center text-secondary small mt-3 mb-0">
+              Demo login: <strong>admin</strong> / <strong>admin123</strong>
+            </p>
+
+            <p class="text-center text-secondary mt-3 mb-0">
+              Don’t have an account?
+              <a routerLink="/signup" class="text-primary text-decoration-none">Sign up</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
