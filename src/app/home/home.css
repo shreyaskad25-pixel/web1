@@ -1,3 +1,145 @@
+.home-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f4f7ff;
+  --scroll-depth: 0px;
+}
+
+.ambient-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.95), transparent 28%),
+    linear-gradient(180deg, #eef4ff 0%, #f8faff 54%, #e8efff 100%);
+}
+
+.ambient-glow {
+  position: absolute;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.4;
+  animation: driftGlow 12s ease-in-out infinite alternate;
+}
+
+.glow-left {
+  top: 10%;
+  left: -18rem;
+  background: rgba(99, 102, 241, 0.36);
+}
+
+.glow-right {
+  top: 35%;
+  right: -20rem;
+  background: rgba(14, 165, 233, 0.3);
+  animation-delay: -4s;
+}
+
+.perspective-grid {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  top: 35%;
+  height: 75%;
+  opacity: 0.34;
+  transform: perspective(500px) rotateX(62deg) translateY(calc(var(--scroll-depth) * -0.16));
+  transform-origin: center top;
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.22) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, transparent, black 22%, black 72%, transparent);
+  animation: gridTravel 9s linear infinite;
+  animation-timeline: scroll(root);
+  animation-range: 0 80%;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: orbitSpin 18s linear infinite;
+  animation-timeline: scroll(root);
+  animation-range: 0 100%;
+}
+
+.orbit-large {
+  width: 46rem;
+  height: 14rem;
+  top: 19%;
+  left: 50%;
+  transform: translateX(-50%) rotateX(68deg) rotateZ(calc(-18deg + var(--scroll-depth) * 0.035));
+}
+
+.orbit-small {
+  width: 23rem;
+  height: 8rem;
+  top: 48%;
+  left: 12%;
+  border-color: rgba(79, 70, 229, 0.18);
+  transform: rotateX(68deg) rotateZ(calc(25deg - var(--scroll-depth) * 0.05));
+  animation-duration: 12s;
+}
+
+.floating-cube {
+  position: absolute;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 1.5rem rgba(96, 165, 250, 0.12), 0 1.5rem 3rem rgba(30, 64, 175, 0.1);
+  transform-style: preserve-3d;
+  transform: translate3d(calc(var(--scroll-depth) * 0.025), calc(var(--scroll-depth) * -0.04), 0) rotateX(calc(var(--scroll-depth) * 0.18)) rotateY(calc(var(--scroll-depth) * 0.24));
+  transition: transform 0.08s linear;
+}
+
+.floating-cube span {
+  position: absolute;
+  inset: 0.65rem;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  transform: translateZ(18px) rotate(45deg);
+}
+
+.cube-one {
+  top: 18%;
+  left: 8%;
+}
+
+.cube-two {
+  top: 42%;
+  right: 10%;
+  width: 4.8rem;
+  height: 4.8rem;
+  animation-delay: -2s;
+}
+
+.cube-three {
+  top: 68%;
+  left: 22%;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+@keyframes driftGlow {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(5rem, 4rem, 0) scale(1.15); }
+}
+
+@keyframes gridTravel {
+  from { background-position: 0 0; }
+  to { background-position: 0 72px; }
+}
+
+@keyframes orbitSpin {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
 .home-hero {
   min-height: 82vh;
   display: flex;
@@ -344,6 +486,15 @@
 }
 
 @media (max-width: 991px) {
+  .perspective-grid {
+    left: -80%;
+    right: -80%;
+  }
+
+  .orbit-large {
+    width: 34rem;
+  }
+
   .scene-3d {
     height: 420px;
   }
@@ -352,5 +503,23 @@
     right: 20px;
     top: 40px;
     width: 90%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow,
+  .perspective-grid,
+  .orbit,
+  .floating-cube,
+  .badge-floating,
+  .dashboard-panel,
+  .strip-inner,
+  .reveal-up,
+  .reveal-float {
+    animation: none;
+  }
+
+  .perspective-grid {
+    transform: perspective(500px) rotateX(62deg);
   }
 }
